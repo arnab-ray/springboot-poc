@@ -23,7 +23,7 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @PostMapping("v1/save")
+    @PostMapping("v1/add")
     public void persist(@RequestBody List<CustomerCreationRequest> customerCreationRequests) {
         customerCreationRequests
                 .forEach(it -> customerService.saveCustomerDetails(it.firstName(), it.lastName()));
