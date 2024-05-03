@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solver>
+
+    <solutionClass>io.arnab.drools.optaplanner.CourseSchedule</solutionClass>
+    <entityClass>io.arnab.drools.optaplanner.Lecture</entityClass>
+
+    <scoreDirectorFactory>
+        <easyScoreCalculatorClass>io.arnab.drools.optaplanner.ScoreCalculator</easyScoreCalculatorClass>
+    </scoreDirectorFactory>
+
+    <termination>
+        <secondsSpentLimit>10</secondsSpentLimit>
+    </termination>
+</solver>

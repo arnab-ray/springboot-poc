@@ -1,0 +1,27 @@
+package io.arnab.drools.rules;
+
+import io.arnab.drools.model.Product;
+
+dialect  "mvel"
+
+rule "Rule1"
+    when
+        product : Product(type == 'Electronic')
+    then
+        product.setLabel("BarCode");
+end
+
+rule "Rule2"
+    when
+        product : Product(type == "Book")
+    then
+        product.setLabel("ISBN");
+end
+
+rule "Rule3"
+    when
+        product : Product(type == "CD")
+    then
+        product.setLabel("VOLUMENo.");
+end
+
