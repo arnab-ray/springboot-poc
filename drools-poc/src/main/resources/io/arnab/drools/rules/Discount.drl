@@ -5,6 +5,8 @@ import io.arnab.drools.model.Fact;
 import io.arnab.drools.model.Customer;
 import io.arnab.drools.model.CustomerType;
 
+import function io.arnab.drools.config.RuleFunctions.log;
+
 dialect  "mvel"
 
 rule "Individual greater than 3y"
@@ -12,6 +14,7 @@ rule "Individual greater than 3y"
         $customer : Customer( type == CustomerType.INDIVIDUAL && years >= 3 )
     then
         $customer.setDiscount(15);
+        log(drools, "customer: %s, years: %d", $customer.getType(), $customer.getYears());
 end
 
 rule "Individual less than 3y"
@@ -19,11 +22,13 @@ rule "Individual less than 3y"
         $customer : Customer( type == CustomerType.INDIVIDUAL, years >= 0, years < 3 )
     then
         $customer.setDiscount(5);
+        log(drools, "customer: %s, years: %d", $customer.getType(), $customer.getYears());
 end
 
 rule "Any business"
     when
         $customer : Customer( type == CustomerType.BUSINESS )
     then
+        log(drools, "customer: %s, years: %d", $customer.getType(), $customer.getYears());
         $customer.setDiscount(20);
 end
